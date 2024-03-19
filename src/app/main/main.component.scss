@@ -95,3 +95,18 @@ h1 {
     }
   }
 }
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px; /* Adjust the margin bottom as needed */
+}
+
+.btn-group .btn {
+  margin-right: 5px; /* Adjust the margin right between buttons */
+}
+
+.btn-group .btn:last-child {
+  margin-right: 0; /* Remove margin from the last button */
+}
+

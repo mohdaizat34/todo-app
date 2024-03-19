@@ -8,9 +8,9 @@ interface Todo {
 }
 
 
-interface TodoList {
-  todos: Todo[],
-}
+// interface TodoList {
+//   todos: Todo[],
+// }
 
 @Component({
   selector: 'app-main',
