@@ -5,39 +5,45 @@
       <form id="new-todo-form" class="mb-3">
         <div class="input-group">
           <input type="text" name="newTodo" id="new-todo" class="form-control" placeholder="Enter your task" [(ngModel)]="todoValue">
-          <button class="btn btn-primary" (click)="AddTodo(todoValue)">
+          <button class="btn btn-primary" (click)="AddTodo(todoValue)" [disabled]="todoValue == '' "> 
             <i class="fas fa-plus"></i>
           </button>
-          <br><br> 
           <button class="btn btn-primary" (click)="SortTodo()">Sort <i class="fas fa-sort"></i></button>
         </div>
       </form>
       <table class="table">
         <thead>
           <tr>
-            <!-- <th>No.</th>
+            <th>Check</th>
             <th>Task</th>
-            <th>Action</th> -->
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let todo of todoList; let i = index">
-            <td>{{todo.id}}</td>
+          <tr *ngFor="let todo of todoList; let i = index" >
+            <td>  
+              <input type="checkbox" name="selectedTodo" [checked]="todo.check == 1" (change)="CompleteTodo(todo.id)" >  
+            </td>
+
             <td>
-              <span *ngIf="!isEditing[i]">{{todo.title}}</span>
-              <input type="text" class="form-control" [(ngModel)]="todo.title" *ngIf="isEditing[i]">
+              <span *ngIf="!isEditing[i]" >{{todo.title}}</span>
+              <input type="text" class="form-control" [(ngModel)]="todo.title" *ngIf="isEditing[i] ">
             </td>
             <td>
               <div class = "btn-group">
                 <button class="btn btn-secondary" (click)="ToggleEdit(i)">
                   <i class="fas fa-edit"></i>
                 </button>
-                <button class="btn btn-primary" (click)="SaveEdit(i)" *ngIf="isEditing[i]">
+                <!-- <button class="btn btn-primary" (click)="SaveEdit(i)" *ngIf="isEditing[i]">
                   <i class="fas fa-save"></i>
-                </button>
+                </button> -->
                 <button class="btn btn-danger" (click)="DeleteTodo(todo.id)">
                   <i class="fas fa-trash-alt"></i>
                 </button>
+
+                <!-- <button class="btn btn-success" (click)="DoneTodo(todo.id)">
+                  <i class="fas fa-check"></i>
+                </button> -->
               </div>
             </td>
           </tr>
