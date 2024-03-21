@@ -79,7 +79,9 @@ export class MainComponent {
     const todo = this.todoList.find(todo => todo.id === id);
 
     if (todo) {
-      todo.check = 1
+      //todo.check = 1
+      
+      todo.check = todo.check === 0 ? 1 : 0;  // if check equals 0 (representing 'not checked'), then set check to 1 (representing 'checked'), otherwise set check to 0 (representing 'unchecked').
       this.todoList.sort((a, b) => a.check - b.check );
       // //debug
       // for (let i = 0; i < this.todoList.length; i++) {
